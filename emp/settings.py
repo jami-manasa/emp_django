@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
+import django_heroku
+import dj_database_url
+from decouple import config
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +30,7 @@ SECRET_KEY = '^b0!a*z--38j=w!_i=5*(*c@lmzfb$iu+1arzc9!=$#&6=0gsr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["empdjango.herokuapp.com"]
+ALLOWED_HOSTS = ["empdjango.herokuapp.com",'0.0.0.0', 'localhost', '127.0.0.1']
 
 
 # Application definition
