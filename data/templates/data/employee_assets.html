@@ -1,0 +1,53 @@
+{% extends "data/base.html" %}
+
+
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Emp ID</td>
+            <td>Full Name</td>
+            <td>Assets</td>
+            <td>
+                <a href="{% url 'employee_list' %}" class="btn btn-outline-success">
+                    <ion-icon name="eye-outline"></ion-icon>
+                    View Employee Details
+                </a>
+                <a href="{% url 'table_insert' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add New Assets
+                </a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for assets in assets_list %}
+            <tr>
+                <td>{{assets.emp.id}}</td>
+                <td>{{assets.emp.fullname}}</td>
+                <td>{{assets.lst}}</td>
+                <td>
+                    <a href="{% url 'table_update' assets.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'assets_delete' assets.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                   
+                </td>
+
+            </tr>
+        {% endfor %}
+    
+                <!-- <a href="{% url 'employee_list' %}" class="btn btn-secondary btn-block btn-lg">
+                    <i class="fas fa-stream"></i> Back to list
+                </a>
+             -->
+    </tbody>
+    
+
+</table>
+
+{% endblock content %}
