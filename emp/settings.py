@@ -83,13 +83,9 @@ WSGI_APPLICATION = 'emp.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'manu',
-        'USER': 'postgres',
-        'PASSWORD': 'Manasa',
-        'HOST': 'localhost'
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 
